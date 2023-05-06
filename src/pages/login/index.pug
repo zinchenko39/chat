@@ -1,0 +1,13 @@
+style(lang="scss").
+  @import '/src/pages/login/index.scss';
+include ../../components/input/index.pug
+include ../../components/button/index.pug
+
+div.loginContainer
+    h2.loginTitle Вход
+    div.loginInputWrapper
+        +input('login', 'Логин', 'Введите логин')
+        +input('password','Пароль', 'Введите пароль')
+        div.loginButtonsWrapper
+          +button('Войти')
+          a(href="/src/pages/register/index.pug").loginRegisterLink  Нет аккаунта?

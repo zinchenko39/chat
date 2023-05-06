@@ -1,0 +1,19 @@
+@import '../../../styles/utils/_variables';
+
+.main {
+  &Chat {
+    &Wrapper {
+      flex-basis: 75%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    &Empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      color: #999999;
+    }
+  }
+}
