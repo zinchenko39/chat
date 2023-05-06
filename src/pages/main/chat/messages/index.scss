@@ -1,0 +1,11 @@
+.main {
+  &Chat {
+    &Messages {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 20px;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+  }
+}

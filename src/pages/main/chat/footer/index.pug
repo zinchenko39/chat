@@ -1,0 +1,20 @@
+style(lang="scss").
+  @import '/src/pages/main/chat/footer/index.scss';
+
+div.mainChatFooter
+    div.mainChatFooterAttached
+        <img src="/src/assets/images/clip.svg" alt="clip">
+        div.mainChatFooterAttachedDropDownMenu
+            div.mainChatFooterAttachedDropDownMenuItem
+                <img src="/src/assets/images/photo-video.svg" alt="plus">
+                <span> Фото или Видео
+            div.mainChatFooterAttachedDropDownMenuItem
+                <img src="/src/assets/images/file.svg" alt="delete">
+                <span> Файл
+            div.mainChatFooterAttachedDropDownMenuItem
+                <img src="/src/assets/images/location.svg" alt="clean">
+                <span> Локация
+    div.mainChatFooterInput
+        +input('message', '', 'Сообщение', 'text', '100%', 'left')
+    div.mainChatFooterSend
+        <img src="/src/assets/images/send-btn.svg" alt="send">

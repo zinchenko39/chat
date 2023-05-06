@@ -1,0 +1,20 @@
+.main {
+  &ChatsList {
+    &Wrapper {
+      flex-basis: 25%;
+      overflow-y: scroll;
+    }
+    &Header {
+      &Btn {
+        display: flex;
+        gap: 10px;
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+    }
+    &Link {
+      text-decoration: none;
+    }
+  }
+}

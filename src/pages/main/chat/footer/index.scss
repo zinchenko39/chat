@@ -1,0 +1,61 @@
+.main {
+  &Chat {
+    &Footer {
+      display: flex;
+      align-items: center;
+      position: relative;
+      bottom: 0;
+      height: 50px;
+      width: 100%;
+      margin-bottom: 10px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      gap: 10px;
+      padding: 10px 20px;
+      &:before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #ccc;
+        z-index: 1;
+      }
+      &Attached {
+        cursor: pointer;
+        &DropDownMenu {
+          position: absolute;
+          padding: 15px;
+          width: 210px;
+          border-radius: 8px;
+          background-color: #ffffff;
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+          display: flex;
+          flex-direction: column;
+          z-index: 100;
+          bottom: 70px;
+          gap: 10px;
+          &Item {
+            cursor: pointer;
+            height: 25px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            img {
+              display: block;
+              width: 23px;
+              height: auto;
+            }
+          }
+        }
+      }
+      &Input {
+        flex-basis: 90%;
+      }
+      &Send {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+style(lang="scss").
+  @import '/src/components/button/index.scss';
+
+mixin button(text, width)
+     div.buttonWrapper(style=`width: ${width || ''};`)
+        p.buttonText  #{text}
