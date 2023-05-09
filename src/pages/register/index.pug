@@ -1,0 +1,19 @@
+style(lang="scss").
+  @import '/src/pages/register/index.scss';
+include ../../components/input/index.pug
+include ../../components/button/index.pug
+
+div.registerContainer
+    h2.registerTitle Регистрация
+    form(action="submit")
+        div.registerInputWrapper
+            +input('email','Почта', 'Введите почту', 'email')
+            +input('login', 'Логин', 'Введите логин')
+            +input('first_name','Имя', 'Введите имя')
+            +input('second_name','Фамилия', 'Введите фамилию')
+            +input('phone','Телефон', 'Введите телефон')
+            +input('password','Пароль', 'Введите пароль', 'password')
+            +input('repeatPassword','Пароль (еще раз)', 'Введите пароль еще раз', 'password')
+            div.registerButtonsWrapper
+              +button('Зарегестироваться', 160)
+              a(href="/src/pages/login/index.pug").loginRegisteLink  Есть аккаунт?

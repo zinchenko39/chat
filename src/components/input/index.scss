@@ -1,0 +1,26 @@
+@import '../../styles/utils/_variables';
+
+.input {
+  border-radius: 10px;
+  border: none;
+  padding: 10px 10px;
+  font-size: 15px;
+  line-height: 20px;
+  width: 100%;
+  background-color: $gray-bg-color;
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &Label {
+    padding-left: 5px;
+    font-size: 16px;
+  }
+
+  &:disabled {
+    color: #a0a0a0;
+  }
+}
