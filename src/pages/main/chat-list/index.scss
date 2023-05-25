@@ -4,6 +4,7 @@
       flex-basis: 25%;
       overflow-y: scroll;
     }
+
     &Header {
       &Btn {
         display: flex;
@@ -13,6 +14,7 @@
         align-items: flex-end;
       }
     }
+
     &Link {
       text-decoration: none;
     }
