@@ -16,7 +16,7 @@
     "quotes": ["warn", "single"],
     "semi": ["error", "always"],
     "react/react-in-jsx-scope": "off",
-    "camelcase": "warn",
+    "camelcase": "off",
     "prefer-spread": "warn",
     "spaced-comment": "warn",
     "no-duplicate-imports": "error",

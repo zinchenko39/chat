@@ -1,8 +1,1 @@
-style(lang="scss").
-  @import '/src/components/input/index.scss';
-
-mixin input(name, label, placeholder, type, width, textAlign)
-    div.inputWrapper(style=`width: ${width || ''};`)
-        if label
-          label.inputLabel  #{label}
-        input.input(type= type || "text", placeholder=placeholder, name=name, style=`text-align: ${textAlign || ''}`)
+input.input(type= type || "text", placeholder=placeholder, name=name, style=`text-align: ${textAlign || ''}`)
