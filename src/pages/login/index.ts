@@ -1,14 +1,12 @@
 import Block from '../../utils/Block';
-import { Input } from '../../components/input';
 import template from './index.pug';
 import styles from './index.scss';
 import { Button } from '../../components/button';
-import { LoginPageProps } from './props';
-import { InputWrapper } from '../../components/inputWrapper';
+import { InputWrapper } from '../../components/input-wrapper';
 
 export class LoginPage extends Block {
-  constructor(props: LoginPageProps) {
-    super(props);
+  constructor() {
+    super({});
   }
 
   init() {
@@ -17,7 +15,6 @@ export class LoginPage extends Block {
       label: 'Логин',
       placeholder: 'Введите логин',
       events: {
-        change: () => console.log(1),
         blur: () => this.checkFields(),
       },
     });
@@ -47,6 +44,7 @@ export class LoginPage extends Block {
     const password = this.children.password.children.input.getValue();
     const passwordRegex = /^(?=.*[A-Z]).{7,}$/;
 
+    // Login validation
     if (login?.length < 3) {
       (this.children.login as Block).setProps({ error: 'Минимальная длина 3 символа' });
     } else if (login?.length > 15)
@@ -54,6 +52,7 @@ export class LoginPage extends Block {
     else {
       (this.children.login as Block).setProps({ error: '' });
     }
+    // Password validation
     if (!passwordRegex.test(password)) {
       (this.children.password as Block).setProps({
         error: 'Пароль должен быть минимум 7 символов и содержать 1 заглавную букву',
@@ -66,8 +65,15 @@ export class LoginPage extends Block {
   onSubmit(event: Event): void {
     event.preventDefault();
     const values = Object.values(this.children)
-      .filter((child) => child instanceof Input)
-      .map((child) => [(child as Input).getName(), (child as Input).getValue()]);
+      .filter((child) => child instanceof InputWrapper)
+      .map((child) => [
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        child.children.input.getName(),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        child.children.input.getValue(),
+      ]);
     const data = Object.fromEntries(values);
     this.checkFields();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

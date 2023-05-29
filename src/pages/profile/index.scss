@@ -70,12 +70,22 @@
     line-height: 16px;
     font-weight: $font-bold;
   }
+  &Form {
+    height: 100vh;
+  }
 
-  &InputWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  &Input {
+    &Wrapper {
+      display: flex;
+      width: 100%;
+    }
+
+    &Container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
   }
 
   &BtnWrapper {

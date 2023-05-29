@@ -1,9 +1,6 @@
-style(lang="scss").
-  @import '/src/pages/main/chat/footer/index.scss';
-
 div.mainChatFooter
     div.mainChatFooterAttached
-        <img src="/src/assets/images/clip.svg" alt="clip">
+        <img src="src/assets/images/clip.svg" alt="clip">
         div.mainChatFooterAttachedDropDownMenu
             div.mainChatFooterAttachedDropDownMenuItem
                 <img src="/src/assets/images/photo-video.svg" alt="plus">
@@ -15,6 +12,6 @@ div.mainChatFooter
                 <img src="/src/assets/images/location.svg" alt="clean">
                 <span> Локация
     div.mainChatFooterInput
-        +input('message', '', 'Сообщение', 'text', '100%', 'left')
+        | !{message}
     div.mainChatFooterSend
         <img src="/src/assets/images/send-btn.svg" alt="send">

@@ -1,0 +1,31 @@
+@import '../../styles/utils/_variables';
+
+.error {
+  position: relative;
+
+  &Wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+
+  &Status {
+    font-size: 96px;
+  }
+
+  &Text {
+    font-size: 48px;
+  }
+
+  &Link {
+    position: absolute;
+    bottom: 70px;
+    font-size: 24px;
+    text-decoration: none;
+    color: #4f5eea;
+  }
+}
