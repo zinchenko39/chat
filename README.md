@@ -1,4 +1,7 @@
 Чат-приложение
+
+PR: https://github.com/zinchenko39/middle.messenger.praktikum.yandex/pull/3
+
 Это простое чат-приложение, созданное с использованием Pug и Parcel. Приложение позволяет пользователям общаться в реальном времени.
 
 Демо
