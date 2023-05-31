@@ -3,18 +3,11 @@ div
     form.profileForm(action="submit")
         div.profileContainer
             div.profileAvatar
-                <img src="/src/assets/images/avatar-man.svg" alt="avatar">
+                <img src=#{avatarLogo} alt="avatar">
             div.profileName #{userName}
             div.profileInputWrapper
-                -const changePassword = false;
+                -const changePassword = true;
                 if changePassword
                     | !{passwordInputs}
                 else
                     | !{infoInputs}
-            div.profileBtnWrapper
-                | !{buttonSave}
-                if changePassword
-                    | !{buttonBack}
-                else
-                    | !{buttonChangePassword}
-                a(href="/src/pages/login/index.pug").profileLogoutLink  Выйти

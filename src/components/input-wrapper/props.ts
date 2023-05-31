@@ -6,6 +6,7 @@ export interface InputWrapperProps {
   width?: number | string;
   textAlign?: string;
   error?: string;
+  gap?: number;
   events?: {
     change?: (event: PointerEvent) => void;
     blur?: (event: PointerEvent) => void;

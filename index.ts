@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const profilePage = new ProfilePage({ userName: 'Вадим' });
   const error404 = new ErrorPage({ errorNumber: 404, errorText: 'Упс... не туда попали' });
 
-  root?.append(profilePage.getContent()!);
+  root?.append(mainPage.getContent()!);
 
-  profilePage.dispatchComponentDidMount();
+  mainPage.dispatchComponentDidMount();
 });

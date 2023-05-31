@@ -1,9 +1,8 @@
 div.messageContainer(style=`align-self: ${me ? 'flex-end' : 'flex-start'}; background-color: ${me ? '#e4edfd' : '#eae8e8'}`)
     div.messageText #{text}
     div.messageBottom
-        - const imgSrc = `./src/assets/images/checked-${checked ? 'blue' : 'grey'}.svg`
         if me
-            img(src=imgSrc, alt='checked')
+            <img src=#{checkedBlueLogo} alt='checked'>
         else
-            img(src=imgSrc, alt='checked')
+            <img src=#{checkedGreyLogo} alt='checked'>
         div.messageBottomTime(style=`color: ${me ? '#3369F3' : '#999999'}`) #{time}

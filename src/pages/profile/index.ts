@@ -6,6 +6,7 @@ import { InfoInputs } from './info-inputs';
 import { PasswordInputs } from './password-inputs';
 import { ProfileSideBar } from './profile-side-bar';
 import { ProfileProps } from './props';
+import avatarLogo from '../../assets/images/avatar-man.svg';
 
 export class ProfilePage extends Block {
   constructor(props: ProfileProps) {
@@ -30,6 +31,6 @@ export class ProfilePage extends Block {
   }
 
   render() {
-    return this.compile(template, { ...this.props, styles });
+    return this.compile(template, { ...this.props, styles, avatarLogo });
   }
 }

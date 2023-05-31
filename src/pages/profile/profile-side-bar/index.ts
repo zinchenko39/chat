@@ -1,5 +1,6 @@
 import Block from '../../../utils/Block';
 import template from './index.pug';
+import logo from '../../../assets/images/back-arrow.svg';
 
 export class ProfileSideBar extends Block {
   constructor() {
@@ -7,6 +8,6 @@ export class ProfileSideBar extends Block {
   }
 
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile(template, { ...this.props, logo });
   }
 }
