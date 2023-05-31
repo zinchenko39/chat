@@ -1,0 +1,6 @@
+div.inputWrapper(style=`width: ${width || ''}; gap: ${gap || '5px'}`)
+    if label
+      label.inputLabel  #{label}
+      | !{input}
+    if error
+      p.inputError #{error}

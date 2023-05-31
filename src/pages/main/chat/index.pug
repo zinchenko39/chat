@@ -1,12 +1,8 @@
-style(lang="scss").
-  @import '/src/pages/main/chat/index.scss';
-
-
 div.mainChatWrapper
     -const noMessages = false;
     if noMessages
         div.mainChatEmpty Выберите чат чтобы отправить сообщение
     else
-        include ./header/index.pug
-        include ./messages/index.pug
-        include ./footer/index.pug
+      | !{header}
+      | !{messages}
+      | !{footer}

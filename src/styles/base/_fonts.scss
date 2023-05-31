@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'ALSHauss';
-  src: local('ALSHauss-Thin'),
-    url('../assets/fonts/ALSHauss-Thin.woff') format('woff'),
+  src: local('ALSHauss-Thin'), url('../assets/fonts/ALSHauss-Thin.woff') format('woff'),
     url('../assets/fonts/ALSHauss-Thin.ttf') format('truetype');
   font-weight: 200;
   font-style: normal;
@@ -10,8 +9,7 @@
 
 @font-face {
   font-family: 'ALSHauss';
-  src: local('ALSHauss-Light'),
-    url('../assets/fonts/ALSHauss-Light.woff') format('woff'),
+  src: local('ALSHauss-Light'), url('../assets/fonts/ALSHauss-Light.woff') format('woff'),
     url('../assets/fonts/ALSHauss-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
@@ -20,8 +18,7 @@
 
 @font-face {
   font-family: 'ALSHauss';
-  src: local('ALSHauss-Regular'),
-    url('../assets/fonts/als_hauss_regular.woff2') format('woff2'),
+  src: local('ALSHauss-Regular'), url('../assets/fonts/als_hauss_regular.woff2') format('woff2'),
     url('../assets/fonts/als_hauss_regular.woff') format('woff');
 
   font-weight: 400;
@@ -31,8 +28,7 @@
 
 @font-face {
   font-family: 'ALSHauss';
-  src: local('ALSHauss-Medium'),
-    url('../assets/fonts/als_hauss_medium.woff2') format('woff2'),
+  src: local('ALSHauss-Medium'), url('../assets/fonts/als_hauss_medium.woff2') format('woff2'),
     url('../assets/fonts/als_hauss_medium.woff') format('woff');
 
   font-weight: 500;
@@ -42,8 +38,7 @@
 
 @font-face {
   font-family: 'ALSHauss';
-  src: local('ALSHauss-Bold'),
-    url('../assets/fonts/als_hauss_bold.woff2') format('woff2'),
+  src: local('ALSHauss-Bold'), url('../assets/fonts/als_hauss_bold.woff2') format('woff2'),
     url('../assets/fonts/als_hauss_bold.woff') format('woff');
 
   font-weight: 700;
@@ -63,19 +58,11 @@
   font-display: 'block';
 }
 
-//@font-face {
-//  font-family: 'Material Symbols Outlined';
-//  font-style: normal;
-//  font-weight: 400;
-//  src: url('~@assets/fonts/Material-Icons.woff2') format('woff2');
-//}
-
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].woff2')
-    format('woff2');
+  src: url('../assets/fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].woff2') format('woff2');
   font-display: 'block';
 }
 
@@ -91,6 +78,5 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }

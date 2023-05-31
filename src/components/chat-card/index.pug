@@ -1,15 +1,11 @@
-style(lang="scss").
-  @import '/src/components/chat-card/index.scss';
-
-mixin chatCard(userName, lastMsg, time, qtyNewMsg)
-    div.chatCardWrapper
-        div.chatCardAvatar
-            <img src="/src/assets/images/avatar-man.svg" alt="avatar">
-        div.chatCardMessage
-            div.chatCardMessageName #{userName}
-            div.chatCardMessageText #{lastMsg}
-        div.chatCardInfo
-            div.chatCardInfoTime #{time}
-            if qtyNewMsg
-              div.chatCardInfoNewMsg #{qtyNewMsg}
+div.chatCardWrapper
+    div.chatCardAvatar
+        <img src=#{avatarLogo} alt="avatar">
+    div.chatCardMessage
+        div.chatCardMessageName #{userName}
+        div.chatCardMessageText #{lastMsg}
+    div.chatCardInfo
+        div.chatCardInfoTime #{time}
+        if qtyNewMsg
+            div.chatCardInfoNewMsg #{qtyNewMsg}
             
