@@ -2915,6 +2915,15 @@ style-search@^0.1.0:
   resolved "https://registry.npmjs.org/style-search/-/style-search-0.1.0.tgz"
   integrity sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==
 
+stylelint-config-recommended-scss@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.npmjs.org/stylelint-config-recommended-scss/-/stylelint-config-recommended-scss-11.0.0.tgz"
+  integrity sha512-EDghTDU7aOv2LTsRZvcT1w8mcjUaMhuy+t38iV5I/0Qiu6ixdkRwhLEMul3K/fnB2v9Nwqvb3xpvJfPH+HduDw==
+  dependencies:
+    postcss-scss "^4.0.6"
+    stylelint-config-recommended "^12.0.0"
+    stylelint-scss "^4.6.0"
+
 stylelint-config-recommended@^12.0.0:
   version "12.0.0"
   resolved "https://registry.npmjs.org/stylelint-config-recommended/-/stylelint-config-recommended-12.0.0.tgz"
@@ -2928,7 +2937,15 @@ stylelint-config-sass-guidelines@10.0.0:
     postcss-scss "^4.0.6"
     stylelint-scss "^4.4.0"
 
-stylelint-config-standard@33.0.0:
+stylelint-config-standard-scss@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.npmjs.org/stylelint-config-standard-scss/-/stylelint-config-standard-scss-9.0.0.tgz"
+  integrity sha512-yPKpJsrZn4ybuQZx/DkEHuCjw7pJginErE/47dFhCnrvD48IJ4UYec8tSiCuJWMA3HRjbIa3nh5ZeSauDGuVAg==
+  dependencies:
+    stylelint-config-recommended-scss "^11.0.0"
+    stylelint-config-standard "^33.0.0"
+
+stylelint-config-standard@^33.0.0, stylelint-config-standard@33.0.0:
   version "33.0.0"
   resolved "https://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-33.0.0.tgz"
   integrity sha512-eyxnLWoXImUn77+ODIuW9qXBDNM+ALN68L3wT1lN2oNspZ7D9NVGlNHb2QCUn4xDug6VZLsh0tF8NyoYzkgTzg==
@@ -2936,6 +2953,16 @@ stylelint-config-standard@33.0.0:
     stylelint-config-recommended "^12.0.0"
 
 stylelint-scss@^4.4.0:
+  version "4.7.0"
+  resolved "https://registry.npmjs.org/stylelint-scss/-/stylelint-scss-4.7.0.tgz"
+  integrity sha512-TSUgIeS0H3jqDZnby1UO1Qv3poi1N8wUYIJY6D1tuUq2MN3lwp/rITVo0wD+1SWTmRm0tNmGO0b7nKInnqF6Hg==
+  dependencies:
+    postcss-media-query-parser "^0.2.3"
+    postcss-resolve-nested-selector "^0.1.1"
+    postcss-selector-parser "^6.0.11"
+    postcss-value-parser "^4.2.0"
+
+stylelint-scss@^4.6.0:
   version "4.7.0"
   resolved "https://registry.npmjs.org/stylelint-scss/-/stylelint-scss-4.7.0.tgz"
   integrity sha512-TSUgIeS0H3jqDZnby1UO1Qv3poi1N8wUYIJY6D1tuUq2MN3lwp/rITVo0wD+1SWTmRm0tNmGO0b7nKInnqF6Hg==

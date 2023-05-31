@@ -178,7 +178,7 @@ class Block<P extends Record<string, any> = any> {
   }
 
   getContent() {
-    return this.element;
+    return this.element!;
   }
 
   _makePropsProxy(props: P) {
