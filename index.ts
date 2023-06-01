@@ -3,7 +3,8 @@ import { LoginPage } from './src/pages/login';
 import { RegisterPage } from './src/pages/register';
 import { ErrorPage } from './src/pages/error';
 import { MainPage } from './src/pages/main';
-import { ProfilePage } from './src/pages/profile';
+import { ProfileInfoPage } from './src/pages/profile-info';
+import { ProfilePasswordPage } from './src/pages/profile-password';
 import renderDOM from './src/utils/renderDom';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +26,10 @@ window.addEventListener('DOMContentLoaded', () => {
       label: 'profile',
     },
     {
+      link: '/profile/password',
+      label: 'profile-password',
+    },
+    {
       link: '/error',
       label: 'error',
     },
@@ -33,7 +38,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const loginPage = new LoginPage();
   const registerPage = new RegisterPage();
   const mainPage = new MainPage();
-  const profilePage = new ProfilePage({ userName: 'Вадим' });
+  const profileInfoPage = new ProfileInfoPage({ userName: 'Вадим' });
+  const profilePasswordPage = new ProfilePasswordPage({ userName: 'Вадим' });
   const error404 = new ErrorPage({ errorNumber: 404, errorText: 'Упс... не туда попали' });
   const allPages = new AllPages({ pages: pages });
 
@@ -48,7 +54,10 @@ window.addEventListener('DOMContentLoaded', () => {
       renderDOM(mainPage);
       break;
     case '/profile':
-      renderDOM(profilePage);
+      renderDOM(profileInfoPage);
+      break;
+    case '/profile/password':
+      renderDOM(profilePasswordPage);
       break;
     case '/error':
       renderDOM(error404);

@@ -1,6 +1,6 @@
-import { Button } from '../../../components/button';
-import { InputWrapper } from '../../../components/input-wrapper';
-import Block from '../../../utils/Block';
+import { Button } from '../button';
+import { InputWrapper } from '../input-wrapper';
+import Block from '../../utils/Block';
 import template from './index.pug';
 
 export class PasswordInputs extends Block {
@@ -13,6 +13,7 @@ export class PasswordInputs extends Block {
       name: 'oldPassword',
       label: 'Старый пароль',
       placeholder: 'Старый пароль',
+      type: 'password',
       width: '100%',
       textAlign: 'left',
       events: {

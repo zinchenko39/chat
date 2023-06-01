@@ -56,11 +56,19 @@ class Block<P extends Record<string, any> = any> {
     return { props: props as P, children };
   }
 
-  _addEvents() {
+  _addEvents(): void {
     const { events = {} } = this.props as P & { events: Record<string, () => void> };
-
+    const eventElement = this._element?.querySelector('[data-event="true"]');
     Object.keys(events).forEach((eventName) => {
-      this._element?.addEventListener(eventName, events[eventName]);
+      (eventElement ?? this._element)?.addEventListener(eventName, events[eventName]);
+    });
+  }
+
+  _removeEvents(): void {
+    const { events = {} } = this.props as P & { events: Record<string, () => void> };
+    const eventElement = this._element?.querySelector('[data-event="true"]');
+    Object.keys(events).forEach((eventName) => {
+      (eventElement ?? this._element)?.removeEventListener(eventName, events[eventName]);
     });
   }
 
