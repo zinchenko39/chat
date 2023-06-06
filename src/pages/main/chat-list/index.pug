@@ -1,27 +1,10 @@
-style(lang="scss").
-  @import '/src/pages/main/chat-list/index.scss';
-include ../../../components/button/index.pug
-include ../../../components/input/index.pug
-include ../../../components/chat-card/index.pug
-
 div.mainChatsListWrapper
-        div.mainChatsListHeader
-            div.mainChatsListHeaderBtn
-                a(href="/src/pages/profile/index.pug").mainChatsListLink
-                  +button('Профиль >', 100)
-                +input('search', '', 'Поиск', 'text', '100%', 'center')
-        div.mainChatsListItems
-            +chatCard('Сергей', 'Привет, как дела?', '10:11', 2)
-            +chatCard('Петя', 'Изображение', '14:34', 1)
-            +chatCard('Вадим', 'Круто!', 'ср', 0)
-            +chatCard('Миша', 'Стикер', 'чт', 0)
-            +chatCard('Саша', 'Как дела?', 'пт', 3)
-            +chatCard('Даша', 'Что делаешь?', 'ср', 0)
-            +chatCard('Вася', 'Затвра будешь?', 'пт', 0)
-            +chatCard('Дима', 'Понравлось', 'чт', 0)
-            +chatCard('Игорь', 'Приходи', 'ср', 0)
-            +chatCard('Олег', 'Друзья, у меня для вас особенный выпуск новостей!', 'ср', 0)
-            +chatCard('Петр', 'Миллионы россиян ежедневно проводят десятки часов свое время', 'ср', 0)
-            +chatCard('Работа', 'Так увлёкся работой по курсу, что совсем забыл его анонсировать', 'ср', 0)
-            +chatCard('Александр', 'Изображение', 'ср', 0)
-            +chatCard('Дмитрий', 'Привет', 'ср', 1)
+  div.mainChatsListHeader
+    div.mainChatsListHeaderBtn
+      a(href="/profile").mainChatsListLink
+        | !{button}
+      div.mainChatsListSearch
+        | !{search}
+  div.mainChatsListItems
+      | !{chatCardSergey}
+      | !{chatCardIvan}

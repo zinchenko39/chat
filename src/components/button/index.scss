@@ -11,14 +11,18 @@
     justify-content: center;
     align-items: center;
     transition: background-color 0.2s ease-in-out;
+    border: none;
+
     &:hover {
       background-color: #4151e6;
     }
+
     &:active {
       background-color: #3543bb;
     }
   }
+
   &Text {
-    color: #ffffff;
+    color: #fff;
   }
 }

@@ -1,0 +1,16 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "import-notation": null,
+    "scss/at-import-no-partial-leading-underscore": null,
+    "color-named": "never",
+    "selector-pseudo-element-no-unknown": [true, { "ignorePseudoElements": ["ng-deep"] }],
+    "selector-class-pattern": null,
+    "function-disallowed-list": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "font-family-name-quotes": null,
+    "declaration-empty-line-before": null,
+    "font-family-no-missing-generic-family-keyword": null
+  },
+  "ignoreFiles": ["build/*"]
+}
