@@ -24,3 +24,5 @@ export class Input extends Block {
     return this.compile(template, { ...this.props, styles });
   }
 }
+
+export default Input;

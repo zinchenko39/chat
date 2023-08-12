@@ -1,6 +1,9 @@
 export interface ChatCardProps {
-  userName: string;
-  lastMsg: string;
+  id: number;
+  title: string;
+  avatar: string;
+  last_message: string;
   time: string;
   qtyNewMsg: number;
+  events?: { click: (event: PointerEvent) => void };
 }

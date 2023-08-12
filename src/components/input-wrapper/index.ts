@@ -4,7 +4,7 @@ import template from './index.pug';
 import styles from './index.scss';
 import { InputWrapperProps } from './props';
 
-export class InputWrapper extends Block {
+class InputWrapper extends Block {
   constructor(props: InputWrapperProps) {
     super(props);
   }
@@ -16,6 +16,7 @@ export class InputWrapper extends Block {
       type: this.props.type,
       textAlign: this.props.textAlign,
       events: this.props.events,
+      value: this.props.value,
     });
   }
 
@@ -23,3 +24,5 @@ export class InputWrapper extends Block {
     return this.compile(template, { ...this.props, styles });
   }
 }
+
+export default InputWrapper;

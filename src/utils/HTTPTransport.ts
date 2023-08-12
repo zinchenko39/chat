@@ -1,3 +1,5 @@
+import { BASE_API_URL } from '../constants/AppConstants';
+
 export enum Method {
   Get = 'Get',
   Post = 'Post',
@@ -9,10 +11,11 @@ export enum Method {
 type Options = {
   method: Method;
   data?: any;
+  type?: string;
 };
 
 export default class HTTPTransport {
-  static API_URL = '';
+  static API_URL = BASE_API_URL;
   protected endpoint: string;
 
   constructor(endpoint: string) {
@@ -30,10 +33,11 @@ export default class HTTPTransport {
     });
   }
 
-  public put<Response = void>(path: string, data: unknown): Promise<Response> {
+  public put<Response = void>(path: string, data: unknown, type?: string): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
       method: Method.Put,
       data,
+      type,
     });
   }
 
@@ -86,5 +90,13 @@ export default class HTTPTransport {
         xhr.send(JSON.stringify(data));
       }
     });
+  }
+}
+
+export abstract class Api {
+  protected http: HTTPTransport;
+
+  protected constructor(endpoint: string) {
+    this.http = new HTTPTransport(endpoint);
   }
 }

@@ -1,8 +1,9 @@
 div 
     | !{profileSideBar}
     form.profileContainer
-        div.profileAvatar
-            <img src=#{avatarLogo} alt="avatar">
+        | !{avatarLogo}
+        //- div.profileAvatar
+        //-     <img src=#{avatarLogo} alt="avatar">
         div.profileName #{userName}
         div.profileInputWrapper
             | !{infoInputs}

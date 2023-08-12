@@ -1,4 +1,4 @@
-import { InputWrapper } from '../../../../components/input-wrapper';
+import InputWrapper from '../../../../components/input-wrapper';
 import Block from '../../../../utils/Block';
 import template from './index.pug';
 import styles from './index.scss';

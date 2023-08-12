@@ -1,8 +1,8 @@
-div.chatCardWrapper
+div.chatCardWrapper(class=classObj.active ? "active" : "")
     div.chatCardAvatar
-        <img src=#{avatarLogo} alt="avatar">
+        img(src=avatar alt="avatar")
     div.chatCardMessage
-        div.chatCardMessageName #{userName}
+        div.chatCardMessageName #{title}
         div.chatCardMessageText #{lastMsg}
     div.chatCardInfo
         div.chatCardInfoTime #{time}

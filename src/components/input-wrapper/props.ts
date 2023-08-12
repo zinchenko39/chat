@@ -11,4 +11,5 @@ export interface InputWrapperProps {
     change?: (event: PointerEvent) => void;
     blur?: (event: PointerEvent) => void;
   };
+  value?: string;
 }

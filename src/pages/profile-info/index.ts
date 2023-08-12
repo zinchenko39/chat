@@ -2,13 +2,16 @@ import { Button } from '../../components/button';
 import Block from '../../utils/Block';
 import template from './index.pug';
 import styles from './index.scss';
-import { InfoInputs } from '../../components/info-inputs';
-import { PasswordInputs } from '../../components/password-inputs';
+import InfoInputs from '../../components/info-inputs';
+// import { PasswordInputs } from '../../components/password-inputs';
 import { ProfileSideBar } from '../../components/profile-side-bar';
 import { ProfileProps } from './props';
-import avatarLogo from '../../assets/images/avatar-man.svg';
+import avatar from '../../assets/images/avatar-man.svg';
+import { connect } from '../../utils/connect';
+import { AvatarLogo } from '../../components/avatarLogo';
+import { userController } from '../../controllers/UserController';
 
-export class ProfileInfoPage extends Block {
+class ProfileInfoPage extends Block {
   constructor(props: ProfileProps) {
     super(props);
   }
@@ -28,9 +31,33 @@ export class ProfileInfoPage extends Block {
       text: 'Изменить пароль',
       width: '160',
     });
+    this.children.avatarLogo = new AvatarLogo({
+      url: avatar,
+      events: {
+        change: (event) => this.handleChangeAvatar(event),
+      },
+    });
+  }
+
+  handleChangeAvatar(event: any) {
+    event.preventDefault();
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+
+    if (file) {
+      const formData = new FormData();
+      formData.append('avatar', file);
+      userController.changeAvatar(formData);
+    } else {
+      console.error('No file selected');
+    }
   }
 
   render() {
-    return this.compile(template, { ...this.props, styles, avatarLogo });
+    return this.compile(template, { ...this.props, styles });
   }
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export default connect(ProfileInfoPage);
