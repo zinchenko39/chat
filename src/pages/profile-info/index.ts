@@ -10,6 +10,7 @@ import avatar from '../../assets/images/avatar-man.svg';
 import { connect } from '../../utils/connect';
 import { AvatarLogo } from '../../components/avatarLogo';
 import { userController } from '../../controllers/UserController';
+import { store } from '../../utils/Store';
 
 class ProfileInfoPage extends Block {
   constructor(props: ProfileProps) {
@@ -31,8 +32,15 @@ class ProfileInfoPage extends Block {
       text: 'Изменить пароль',
       width: '160',
     });
+  }
+
+  showAvatar() {
+    const avatarUrl = store?.getState().user?.avatar;
+    console.log(store?.getState().user);
+    const baseUrl = 'https://ya-praktikum.tech/api/v2/resources';
+    const fullAvatarUrl = store?.getState().user?.avatar ? `${baseUrl}${avatarUrl}` : avatar;
     this.children.avatarLogo = new AvatarLogo({
-      url: avatar,
+      url: fullAvatarUrl,
       events: {
         change: (event) => this.handleChangeAvatar(event),
       },
@@ -54,6 +62,7 @@ class ProfileInfoPage extends Block {
   }
 
   render() {
+    this.showAvatar();
     return this.compile(template, { ...this.props, styles });
   }
 }

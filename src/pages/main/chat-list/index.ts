@@ -81,7 +81,6 @@ class ChatList extends Block {
   }
 
   render() {
-    console.log(store.getState()?.chats);
     this.children.chats = this.renderChats(store.getState()?.chats || []);
     return this.compile(template, { ...this.props, styles });
   }

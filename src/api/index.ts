@@ -18,11 +18,11 @@ export class AuthApi extends Api {
   }
 
   async signIn<T>(data: ISignInData): Promise<IResponse<T>> {
-    return await this.http.post('/signin', data);
+    return await this.http.post('/signin', { data });
   }
 
   async signup<T>(data: ISignUpData): Promise<IResponse<T>> {
-    return await this.http.post('/signup', data);
+    return await this.http.post('/signup', { data });
   }
   async getUser(): Promise<IUser> {
     return await this.http.get('/user');
@@ -42,19 +42,19 @@ export class UserApi extends Api {
   }
 
   async setAvatar<T>(data: FormData): Promise<IResponse<T>> {
-    return await this.http.put('/profile/avatar', data, 'file');
+    return await this.http.put('/profile/avatar', { data });
   }
 
   async searchUser<T>(data: { login: string }): Promise<IResponse<T>> {
-    return await this.http.post('/search', data);
+    return await this.http.post('/search', { data });
   }
 
   async changeProfile<T>(data: any): Promise<IResponse<T>> {
-    return await this.http.put('/profile', data);
+    return await this.http.put('/profile', { data });
   }
 
   async changePassword<T>(data: any): Promise<IResponse<T>> {
-    return await this.http.put('/password', data);
+    return await this.http.put('/password', { data });
   }
 }
 
@@ -64,15 +64,15 @@ export class ChatApi extends Api {
   }
 
   async getChats<T>(): Promise<IChat[]> {
-    return await this.http.get();
+    return await this.http.get('');
   }
 
   async createChat<T>(data: ICreateChatData): Promise<IResponse<T>> {
-    return await this.http.post('', data);
+    return await this.http.post('', { data });
   }
 
   async deleteChat(data: DeleteChatData): Promise<DeletedChatResponse> {
-    return this.http.delete(``, { data });
+    return this.http.delete('', { data });
   }
 
   async getChatUsers(data: GetChatUsersData): Promise<IUser[]> {

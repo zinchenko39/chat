@@ -33,10 +33,8 @@ export class UserController {
   public changeAvatar(data: FormData): void {
     this.apiUser
       .setAvatar(data)
-      .then(({ status, data }) => {
-        if (status === 200) {
-          store.setUser(data as IUser);
-        }
+      .then((data) => {
+        store.setUser(data as any);
       })
       .catch((error) => {
         console.log(error);

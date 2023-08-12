@@ -4,14 +4,15 @@ div.mainChatHeader
             <img src=#{avatarLogo} alt="avatar">
         div.mainChatHeaderUserName Вадим
     div.mainChatHeaderBtn 
-        <img src=#{pointsLogo} alt="points">
-        div.mainChatHeaderDropDownMenu
+        | !{dotsMenu}
+        div.mainChatHeaderDropDownMenu(class=show ? 'show' : 'hide')
             div.mainChatHeaderDropDownMenuItem
                 <img src=#{plusLogo} alt="plus">
                 | !{addUserButton}
             div.mainChatHeaderDropDownMenuItem
                 <img src=#{deleteUserLogo} alt="deleteUser">
-                <span> Удалить пользователя
+                | !{removeUserButton}
             div.mainChatHeaderDropDownMenuItem
                 <img src=#{cleanLogo} alt="clean">
-                <span> Очистить чат
+                | !{deleteChatButton}
+                | !{modal}

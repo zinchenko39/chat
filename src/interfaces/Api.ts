@@ -1,4 +1,20 @@
-export interface ISignUpData {
+export const API_URL = 'https://ya-praktikum.tech/api/v2';
+
+export enum METHODS {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+}
+
+export interface Options {
+  method: string;
+  headers: Record<string, string>;
+  data: Record<string, unknown> | FormData;
+  timeout: number;
+}
+
+export interface ISignUpData extends Record<string, string> {
   first_name: string;
   second_name: string;
   login: string;
@@ -7,7 +23,7 @@ export interface ISignUpData {
   phone: string;
 }
 
-export interface ISignInData {
+export interface ISignInData extends Record<string, string> {
   login: string;
   password: string;
 }
@@ -28,7 +44,7 @@ export interface IUserPassword {
   newPassword: string;
 }
 
-export interface ICreateChatData {
+export interface ICreateChatData extends Record<string, string> {
   title: string;
 }
 
