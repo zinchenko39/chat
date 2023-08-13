@@ -1,8 +1,7 @@
 div.mainChatHeader
     div.mainChatHeaderUser
-        div.mainChatHeaderUserAvatar
-            <img src=#{avatarLogo} alt="avatar">
-        div.mainChatHeaderUserName Вадим
+        each user in usersList
+            | !{user}
     div.mainChatHeaderBtn 
         | !{dotsMenu}
         div.mainChatHeaderDropDownMenu(class=show ? 'show' : 'hide')

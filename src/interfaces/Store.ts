@@ -20,19 +20,18 @@ export interface IChat {
   unread_count: number;
 }
 
+export interface IChatList {
+  avatar: string | null;
+  display_name: string | null;
+  first_name: string | null;
+  id: number;
+  role: string;
+  second_name: string;
+}
+
 export interface IState {
   user?: IUser;
-  userList?: Record<
-    number,
-    Array<{
-      avatar: string | null;
-      display_name: string | null;
-      first_name: string | null;
-      id: number;
-      role: string;
-      second_name: string;
-    }>
-  >;
+  userList?: IChatList[];
   activeChatId?: number;
   chats?: IChat[];
   chatsToken?: {
@@ -41,5 +40,5 @@ export interface IState {
     };
   };
   messages?: IMessage[];
-  chatsFilter?: '';
+  chatsFilter?: string;
 }

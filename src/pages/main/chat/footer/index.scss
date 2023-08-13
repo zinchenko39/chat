@@ -54,6 +54,13 @@
             }
           }
         }
+        &DropDownMenu.show {
+          display: flex;
+        }
+
+        &DropDownMenu.hide {
+          display: none;
+        }
       }
 
       &Input {

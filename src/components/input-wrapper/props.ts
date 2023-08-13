@@ -8,6 +8,7 @@ export interface InputWrapperProps {
   error?: string;
   gap?: number;
   events?: {
+    click?: (event: PointerEvent) => void;
     change?: (event: PointerEvent) => void;
     blur?: (event: PointerEvent) => void;
   };

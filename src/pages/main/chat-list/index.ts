@@ -7,7 +7,6 @@ import { IChat } from '../../../interfaces/Store';
 import { store } from '../../../utils/Store';
 import { connect } from '../../../utils/connect';
 import { chatController } from '../../../controllers/ChatsController';
-import avatarLogo from '../../../assets/images/avatar-man.svg';
 import styles from './index.scss';
 import { Modal } from '../../../components/modal';
 
@@ -20,10 +19,14 @@ class ChatList extends Block {
     this.children.search = new InputWrapper({
       name: 'search',
       label: 'Поиск',
-      placeholder: 'Введите имя пользователя для поиска',
+      placeholder: 'Введите имя чата для поиска',
       type: 'text',
       width: '100%',
       textAlign: 'left',
+      events: {
+        change: (event: Event) =>
+          store.set({ chatsFilter: (event.target as HTMLInputElement).value }),
+      },
     });
     this.children.password = new InputWrapper({
       name: 'password',
@@ -64,17 +67,22 @@ class ChatList extends Block {
   }
 
   renderChats(chats: IChat[]) {
-    return chats.map(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const filteredChats = chats.filter((chat) => chat.title.match(store.getState().chatsFilter));
+    return filteredChats.map(
       (chat) =>
         new ChatCard({
           id: chat.id,
           title: chat.title,
           last_message: chat?.last_message?.content || '',
-          time: '10:12',
-          avatar: chat.avatar || avatarLogo,
+          time: '',
+          avatar: chat.avatar,
           qtyNewMsg: chat.unread_count,
           events: {
-            click: () => store.set({ activeChatId: chat.id }),
+            click: () => {
+              chatController.selectChat(chat.id);
+            },
           },
         }),
     );

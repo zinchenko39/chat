@@ -10,7 +10,7 @@ import {
   GetChatUsersData,
   ChangeUsersData,
 } from '../interfaces/Api';
-import { IChat } from '../interfaces/Store';
+import { IChat, IChatList } from '../interfaces/Store';
 
 export class AuthApi extends Api {
   constructor() {
@@ -75,7 +75,7 @@ export class ChatApi extends Api {
     return this.http.delete('', { data });
   }
 
-  async getChatUsers(data: GetChatUsersData): Promise<IUser[]> {
+  async getChatUsers(data: GetChatUsersData): Promise<IChatList[]> {
     return this.http.get(`/${data.id}/users`);
   }
 
@@ -99,25 +99,3 @@ export class ChatApi extends Api {
     return this.http.put('/avatar', { data });
   }
 }
-
-// export const isChatsTokenRequestData = (value: unknown): value is { id: number } =>
-//   typeof value === 'object' &&
-//   value &&
-//   Object.prototype.hasOwnProperty.call(value, 'id') &&
-//   Object.keys(value).length === 1;
-
-// export class ChatsTokenApi extends Api {
-//   constructor() {
-//     super('/chats/token');
-//   }
-
-//   async getToken<T = { id: number }>(
-//     data: T,
-//   ): Promise<IResponse<Array<{ data: { token: string } }>>> {
-//     if (!isChatsTokenRequestData(data)) {
-//       throw new Error('Expected IChatsTokenRequestData type');
-//     }
-
-//     return await this.http.post(`/${data.id.toString()}`);
-//   }
-// }

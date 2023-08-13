@@ -36,7 +36,6 @@ class ProfileInfoPage extends Block {
 
   showAvatar() {
     const avatarUrl = store?.getState().user?.avatar;
-    console.log(store?.getState().user);
     const baseUrl = 'https://ya-praktikum.tech/api/v2/resources';
     const fullAvatarUrl = store?.getState().user?.avatar ? `${baseUrl}${avatarUrl}` : avatar;
     this.children.avatarLogo = new AvatarLogo({

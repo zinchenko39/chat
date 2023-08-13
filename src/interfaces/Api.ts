@@ -84,3 +84,14 @@ export interface ChangeUsersData extends Record<string, number | number[]> {
 export interface GetChatUsersData extends Record<string, number | number[]> {
   id: number;
 }
+
+export enum WsEvents {
+  CONNECTED = 'connected',
+  ERROR = 'error',
+  MESSAGE = 'message',
+  CLOSE = 'close',
+}
+
+export enum WsMessagesT {
+  PING = 'ping',
+}

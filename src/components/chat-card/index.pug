@@ -1,6 +1,5 @@
 div.chatCardWrapper(class=classObj.active ? "active" : "")
-    div.chatCardAvatar
-        img(src=avatar alt="avatar")
+    | !{avatar}
     div.chatCardMessage
         div.chatCardMessageName #{title}
         div.chatCardMessageText #{lastMsg}
