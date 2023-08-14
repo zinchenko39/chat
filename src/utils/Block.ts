@@ -162,7 +162,7 @@ class Block<P extends Record<string, any> = any> {
     this._addEvents();
   }
 
-  protected compile(template: (context: any) => string, context: any) {
+  protected compile(template: (context: unknown) => string, context: any) {
     const contextAndStubs = { ...context };
 
     Object.entries(this.children).forEach(([name, component]) => {

@@ -59,7 +59,7 @@ export interface IMessage {
   file: string | null;
 }
 
-export interface IResponse<TResponseData = any> {
+export interface IResponse<TResponseData = unknown> {
   status: number;
   data: TResponseData;
 }
