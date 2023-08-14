@@ -7,4 +7,5 @@ export interface InputProps {
     change?: (event: PointerEvent) => void;
     blur?: (event: PointerEvent) => void;
   };
+  value?: string;
 }

@@ -2,7 +2,8 @@ import Block from '../../utils/Block';
 import template from './index.pug';
 import styles from './index.scss';
 import { Button } from '../../components/button';
-import { InputWrapper } from '../../components/input-wrapper';
+import InputWrapper from '../../components/input-wrapper';
+import { authController } from '../../controllers/AuthControllers';
 
 export class LoginPage extends Block {
   constructor() {
@@ -21,6 +22,7 @@ export class LoginPage extends Block {
     this.children.password = new InputWrapper({
       name: 'password',
       label: 'Пароль',
+      type: 'password',
       placeholder: 'Введите пароль',
       events: {
         blur: () => this.checkFields(),
@@ -78,7 +80,8 @@ export class LoginPage extends Block {
     this.checkFields();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    if (!this.children.login.props.error && !this.children.password.props.error) console.log(data);
+    if (!this.children.login.props.error && !this.children.password.props.error)
+      authController.signIn(data);
   }
 
   render() {

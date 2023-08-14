@@ -1,10 +1,13 @@
 div.mainChatsListWrapper
   div.mainChatsListHeader
     div.mainChatsListHeaderBtn
-      a(href="/profile").mainChatsListLink
-        | !{button}
+      div.mainChatsListHeaderBtnActions
+        | !{newChatButton}
+        a(href="/profile").mainChatsListLink
+          | !{button}
       div.mainChatsListSearch
         | !{search}
   div.mainChatsListItems
-      | !{chatCardSergey}
-      | !{chatCardIvan}
+    each chatCard in chats
+      | !{chatCard}
+  | !{modal}
