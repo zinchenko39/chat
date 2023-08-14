@@ -5,7 +5,7 @@ PR: https://github.com/zinchenko39/middle.messenger.praktikum.yandex/pull/3
 Это простое чат-приложение, созданное с использованием Pug и Parcel. Приложение позволяет пользователям общаться в реальном времени.
 
 Демо
-Вы можете посмотреть демонстрацию приложения по адресу: https://resonant-druid-ed1df3.netlify.app
+Вы можете посмотреть демонстрацию приложения по адресу: https://deploy--resonant-druid-ed1df3.netlify.app/login
 
 Начало работы
 Чтобы начать работу с приложением, выполните следующие действия:
