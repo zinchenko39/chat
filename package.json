@@ -9,7 +9,7 @@
     "lint:styles": "stylelint \"src/**/*.scss\"",
     "lint:styles:fix": "stylelint --fix \"src/**/*.scss\"",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md}' --config ./.prettierrc",
-    "build": "parcel build index.html && node server.ts"
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",

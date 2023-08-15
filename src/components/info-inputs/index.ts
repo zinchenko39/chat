@@ -1,9 +1,14 @@
 import { Button } from '../button';
-import { InputWrapper } from '../input-wrapper';
+import InputWrapper from '../input-wrapper';
 import Block from '../../utils/Block';
 import template from './index.pug';
+import { authController } from '../../controllers/AuthControllers';
+import { userController } from '../../controllers/UserController';
+import { connect } from '../../utils/connect';
+import Router from '../../utils/Router';
+import { RouterPath } from '../../constants/AppConstants';
 
-export class InfoInputs extends Block {
+class InfoInputs extends Block {
   constructor() {
     super({});
   }
@@ -19,6 +24,7 @@ export class InfoInputs extends Block {
       events: {
         blur: () => this.checkFields(),
       },
+      value: this.props?.user?.email,
     });
     this.children.login = new InputWrapper({
       name: 'login',
@@ -30,6 +36,7 @@ export class InfoInputs extends Block {
       events: {
         blur: () => this.checkFields(),
       },
+      value: this.props?.user?.login,
     });
     this.children.first_name = new InputWrapper({
       name: 'first_name',
@@ -38,6 +45,7 @@ export class InfoInputs extends Block {
       type: 'text',
       width: '100%',
       textAlign: 'left',
+      value: this.props?.user?.first_name,
     });
     this.children.second_name = new InputWrapper({
       name: 'second_name',
@@ -46,6 +54,7 @@ export class InfoInputs extends Block {
       type: 'text',
       width: '100%',
       textAlign: 'left',
+      value: this.props?.user?.second_name,
     });
     this.children.display_name = new InputWrapper({
       name: 'display_name',
@@ -54,6 +63,7 @@ export class InfoInputs extends Block {
       type: 'text',
       width: '100%',
       textAlign: 'left',
+      value: this.props?.user?.display_name,
     });
     this.children.phone = new InputWrapper({
       name: 'phone',
@@ -65,17 +75,26 @@ export class InfoInputs extends Block {
       events: {
         blur: () => this.checkFields(),
       },
+      value: this.props?.user?.phone,
     });
     this.children.buttonSave = new Button({
       text: 'Сохранить',
-      width: '160',
       events: {
         click: (event) => this.onSubmit(event),
       },
     });
     this.children.buttonChangePassword = new Button({
       text: 'Изменить пароль',
-      width: '160',
+      events: {
+        click: () => Router.go(RouterPath.profilePassword),
+      },
+    });
+    this.children.buttonExit = new Button({
+      text: 'Выйти',
+      bgColor: 'red',
+      events: {
+        click: () => this.logout(),
+      },
     });
   }
 
@@ -139,17 +158,26 @@ export class InfoInputs extends Block {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           if (value.props?.error) {
-            return true; // Если найдена ошибка, возвращаем true
+            return true;
           }
-          return hasErrors(value); // Рекурсивно проверяем вложенные объекты
+          return hasErrors(value);
         }
         return false;
       });
     }
-    if (!hasErrors(this.children)) console.log(data);
+    if (!hasErrors(this.children)) {
+      userController.updateProfile(data);
+    }
+  }
+
+  logout(): void {
+    authController.logout();
   }
 
   render() {
+    this.init();
     return this.compile(template, { ...this.props });
   }
 }
+
+export default connect(InfoInputs);

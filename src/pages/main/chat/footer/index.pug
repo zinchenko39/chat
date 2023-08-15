@@ -1,7 +1,7 @@
 div.mainChatFooter
     div.mainChatFooterAttached
-        <img src=#{clipLogo} alt="clip">
-        div.mainChatFooterAttachedDropDownMenu
+        | !{attachmetsButton}
+        div.mainChatFooterAttachedDropDownMenu(class=show ? 'show' : 'hide')
             div.mainChatFooterAttachedDropDownMenuItem
                 <img src=#{plusLogo} alt="plus">
                 <span> Фото или Видео
@@ -13,5 +13,4 @@ div.mainChatFooter
                 <span> Локация
     div.mainChatFooterInput
         | !{message}
-    div.mainChatFooterSend
-        <img src=#{sendLogo} alt="send">
+    | !{sendButton}

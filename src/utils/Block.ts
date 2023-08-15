@@ -1,6 +1,8 @@
 import { EventBus } from './EventBus';
 import { v4 as makeUUID } from 'uuid';
 
+type Callback = (...args: unknown[]) => unknown;
+
 class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
@@ -12,6 +14,7 @@ class Block<P extends Record<string, any> = any> {
   public id = makeUUID();
   protected props: P;
   public children: Record<string, Block | Block[]>;
+  private events: Record<string, Callback>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 
@@ -21,11 +24,12 @@ class Block<P extends Record<string, any> = any> {
    *
    * @returns {void}
    */
-  constructor(propsWithChildren: P) {
+  constructor(propsWithChildren: P, private eventQuery: string | null = null) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
+    this.events = props.events as Record<string, Callback>;
     this.children = children;
     this.props = this._makePropsProxy(props);
 
@@ -54,6 +58,23 @@ class Block<P extends Record<string, any> = any> {
     });
 
     return { props: props as P, children };
+  }
+
+  private getEventTarget() {
+    let eventTarget = this.element;
+    if (this.eventQuery) {
+      eventTarget = eventTarget?.querySelector(this.eventQuery) || this.element;
+    }
+    return eventTarget;
+  }
+
+  public on(eventName: string, callback: Callback) {
+    if (!this.events) {
+      this.events = {};
+    }
+    this.events[eventName] = callback;
+    const eventTarget = this.getEventTarget();
+    eventTarget?.addEventListener(eventName, this.events[eventName]);
   }
 
   _addEvents(): void {
@@ -141,14 +162,14 @@ class Block<P extends Record<string, any> = any> {
     this._addEvents();
   }
 
-  protected compile(template: (context: any) => string, context: any) {
+  protected compile(template: (context: unknown) => string, context: any) {
     const contextAndStubs = { ...context };
 
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
-        contextAndStubs[name] = component.map((child) => `<div data-id="${child.id}"></div>`);
+        contextAndStubs[name] = component.map((child) => `<div data-id="${child?.id}"></div>`);
       } else {
-        contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+        contextAndStubs[name] = `<div data-id="${component?.id}"></div>`;
       }
     });
 
@@ -159,7 +180,7 @@ class Block<P extends Record<string, any> = any> {
     temp.innerHTML = html;
 
     const replaceStub = (component: Block) => {
-      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+      const stub = temp.content.querySelector(`[data-id="${component?.id}"]`);
 
       if (!stub) {
         return;

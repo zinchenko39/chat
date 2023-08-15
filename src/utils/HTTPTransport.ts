@@ -1,90 +1,106 @@
-export enum Method {
-  Get = 'Get',
-  Post = 'Post',
-  Put = 'Put',
-  Patch = 'Patch',
-  Delete = 'Delete',
+import { API_URL, METHODS, Options } from '../interfaces/Api';
+
+function queryStringify(data: Record<string, unknown>) {
+  if (typeof data !== 'object') {
+    throw new Error('Data must be object');
+  }
+
+  let queryString = '?';
+  Object.entries(data).forEach(([key, value], index) => {
+    if (index === 0) {
+      queryString += `${key}=${value}`;
+    } else {
+      queryString += `&${key}=${value}`;
+    }
+  });
+  return queryString;
 }
 
-type Options = {
-  method: Method;
-  data?: any;
-};
+type HTTPMethod = <R>(url: string, options?: Partial<Options>) => Promise<R>;
+class HTTPTransport {
+  constructor(private entity: string) {}
 
-export default class HTTPTransport {
-  static API_URL = '';
-  protected endpoint: string;
+  public get: HTTPMethod = (url, options = {}) => {
+    return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+  };
 
-  constructor(endpoint: string) {
-    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
-  }
+  public post: HTTPMethod = (url, options = {}) => {
+    return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+  };
 
-  public get<Response>(path = '/'): Promise<Response> {
-    return this.request<Response>(this.endpoint + path);
-  }
+  public put: HTTPMethod = (url, options = {}) => {
+    return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+  };
 
-  public post<Response = void>(path: string, data?: unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
-      method: Method.Post,
-      data,
-    });
-  }
+  public delete: HTTPMethod = (url, options = {}) => {
+    return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+  };
 
-  public put<Response = void>(path: string, data: unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
-      method: Method.Put,
-      data,
-    });
-  }
+  private request<R>(
+    pathname: string,
+    options: Partial<Omit<Options, 'timeout'>> = {},
+    timeout = 5000,
+  ): Promise<R> {
+    const url = `${API_URL}${this.entity}${pathname}`;
+    const { headers = {}, method, data } = options;
 
-  public patch<Response = void>(path: string, data: unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
-      method: Method.Patch,
-      data,
-    });
-  }
+    return new Promise(function (resolve, reject) {
+      if (!method) {
+        reject(new Error('No method'));
+        return;
+      }
 
-  public delete<Response>(path: string, data?: unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
-      method: Method.Delete,
-      data,
-    });
-  }
-
-  private request<Response>(
-    url: string,
-    options: Options = { method: Method.Get },
-  ): Promise<Response> {
-    const { method, data } = options;
-
-    return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+      const isGet = method === METHODS.GET;
 
-      xhr.onreadystatechange = (e) => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status < 400) {
-            resolve(xhr.response);
+      xhr.open(
+        method,
+        isGet && !!data ? `${url}${queryStringify(data as Record<string, unknown>)}` : url,
+      );
+
+      Object.keys(headers).forEach((key) => {
+        xhr.setRequestHeader(key, headers[key]);
+      });
+
+      if (!isGet && !(data instanceof FormData)) {
+        xhr.setRequestHeader('Content-Type', 'application/json');
+      }
+
+      xhr.onload = function () {
+        if (xhr.status < 400) {
+          if (xhr.getResponseHeader('Content-Type')?.match('application/json;')) {
+            resolve(JSON.parse(xhr.response) as R);
           } else {
-            reject(xhr.response);
+            resolve(xhr.response as R);
           }
+        } else {
+          reject(xhr.response);
         }
       };
 
-      xhr.onabort = () => reject({ reason: 'abort' });
-      xhr.onerror = () => reject({ reason: 'network error' });
-      xhr.ontimeout = () => reject({ reason: 'timeout' });
-
-      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onabort = reject;
+      xhr.onerror = reject;
 
       xhr.withCredentials = true;
-      xhr.responseType = 'json';
+      xhr.timeout = timeout;
+      xhr.ontimeout = reject;
 
-      if (method === Method.Get || !data) {
+      if (isGet || !data) {
         xhr.send();
+      } else if (data instanceof FormData) {
+        xhr.send(data);
       } else {
         xhr.send(JSON.stringify(data));
       }
     });
+  }
+}
+export default HTTPTransport;
+
+export abstract class Api {
+  protected http: HTTPTransport;
+
+  protected constructor(endpoint: string) {
+    this.http = new HTTPTransport(endpoint);
   }
 }

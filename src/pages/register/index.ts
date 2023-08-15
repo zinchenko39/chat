@@ -2,7 +2,8 @@ import Block from '../../utils/Block';
 import template from './index.pug';
 import styles from './index.scss';
 import { Button } from '../../components/button';
-import { InputWrapper } from '../../components/input-wrapper';
+import InputWrapper from '../../components/input-wrapper';
+import { authController } from '../../controllers/AuthControllers';
 
 export class RegisterPage extends Block {
   constructor() {
@@ -157,7 +158,9 @@ export class RegisterPage extends Block {
         return false;
       });
     }
-    if (!hasErrors(this.children)) console.log(data);
+    if (!hasErrors(this.children)) {
+      authController.signUp(data);
+    }
   }
 
   render() {

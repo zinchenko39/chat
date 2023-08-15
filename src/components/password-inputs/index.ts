@@ -1,7 +1,11 @@
 import { Button } from '../button';
-import { InputWrapper } from '../input-wrapper';
+import InputWrapper from '../input-wrapper';
 import Block from '../../utils/Block';
 import template from './index.pug';
+import { userController } from '../../controllers/UserController';
+import { authController } from '../../controllers/AuthControllers';
+import Router from '../../utils/Router';
+import { RouterPath } from '../../constants/AppConstants';
 
 export class PasswordInputs extends Block {
   constructor() {
@@ -52,17 +56,24 @@ export class PasswordInputs extends Block {
     this.children.buttonBack = new Button({
       text: 'Назад',
       width: '160',
+      events: {
+        click: () => Router.go(RouterPath.profile),
+      },
     });
-    this.children.buttonChangePassword = new Button({
-      text: 'Изменить пароль',
-      width: '160',
+    this.children.buttonExit = new Button({
+      text: 'Выйти',
+      bgColor: 'red',
+      events: {
+        click: () => this.logout(),
+      },
     });
+    // this.children.buttonChangePassword = new Button({
+    //   text: 'Изменить пароль',
+    //   width: '160',
+    // });
   }
 
   checkFields() {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const oldPassword = this.children.oldPassword.children.input.getValue();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const newPassword = this.children.newPassword.children.input.getValue();
@@ -117,7 +128,14 @@ export class PasswordInputs extends Block {
         return false;
       });
     }
-    if (!hasErrors(this.children)) console.log(data);
+    if (!hasErrors(this.children)) {
+      userController.updatePassword(data);
+      Router.go(RouterPath.profile);
+    }
+  }
+
+  logout(): void {
+    authController.logout();
   }
 
   render() {
