@@ -1,4 +1,4 @@
-import { Api } from '../utils/HTTPTransport';
+import { Api } from '../utils/HTTPTransport/HTTPTransport';
 import {
   ISignInData,
   IResponse,
