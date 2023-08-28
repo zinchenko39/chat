@@ -1,4 +1,4 @@
-import Block from './Block'; // Путь до вашего файла
+import Block from './Block';
 import { EventBus } from '../EventBus';
 import { v4 as makeUUID } from 'uuid';
 
