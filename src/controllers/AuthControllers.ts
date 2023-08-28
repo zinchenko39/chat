@@ -2,7 +2,7 @@ import { AuthApi } from '../api';
 import { ISignUpData } from '../interfaces/Api';
 import { store } from '../utils/Store';
 import { RouterPath } from '../constants/AppConstants';
-import Router from '../utils/Router';
+import Router from '../utils/Router/Router';
 
 export class AuthController {
   private readonly api = new AuthApi();

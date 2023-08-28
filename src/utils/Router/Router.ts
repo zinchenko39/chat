@@ -1,6 +1,6 @@
-import Block from './Block';
-import { RouterPath } from '../constants/AppConstants';
-import { authController } from '../controllers/AuthControllers';
+import Block from '../Block/Block';
+import { RouterPath } from '../../constants/AppConstants';
+import { authController } from '../../controllers/AuthControllers';
 
 // interface PropsT {
 //   routes: TypeRoute[];
@@ -56,7 +56,7 @@ export type TypeRoute = Route;
 class Router {
   private static __instance: Router | null = null;
 
-  private routes: Route[] = [];
+  public routes: Route[] = [];
 
   private history = window.history;
 
@@ -119,4 +119,5 @@ class Router {
   }
 }
 
+export { Router };
 export default new Router();

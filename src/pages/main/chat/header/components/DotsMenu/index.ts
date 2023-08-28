@@ -1,4 +1,4 @@
-import Block from '../../../../../../utils/Block';
+import Block from '../../../../../../utils/Block/Block';
 import template from './index.pug';
 import pointsLogo from '../../../../../../assets/images/three_points.svg';
 

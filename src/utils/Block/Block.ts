@@ -1,4 +1,4 @@
-import { EventBus } from './EventBus';
+import { EventBus } from '../EventBus';
 import { v4 as makeUUID } from 'uuid';
 
 type Callback = (...args: unknown[]) => unknown;
@@ -12,11 +12,11 @@ class Block<P extends Record<string, any> = any> {
   } as const;
 
   public id = makeUUID();
-  protected props: P;
+  public props: P;
   public children: Record<string, Block | Block[]>;
-  private events: Record<string, Callback>;
+  public events: Record<string, Callback>;
   private eventBus: () => EventBus;
-  private _element: HTMLElement | null = null;
+  public _element: HTMLElement | null = null;
 
   /** JSDoc
    * @param {string} tagName
@@ -132,7 +132,8 @@ class Block<P extends Record<string, any> = any> {
     }
   }
 
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected componentDidUpdate(_oldProps: P, _newProps: P) {
     return true;
   }
 

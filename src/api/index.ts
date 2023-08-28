@@ -63,7 +63,7 @@ export class ChatApi extends Api {
     super('/chats');
   }
 
-  async getChats<T>(): Promise<IChat[]> {
+  async getChats(): Promise<IChat[]> {
     return await this.http.get('');
   }
 

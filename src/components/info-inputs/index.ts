@@ -1,11 +1,11 @@
 import { Button } from '../button';
 import InputWrapper from '../input-wrapper';
-import Block from '../../utils/Block';
+import Block from '../../utils/Block/Block';
 import template from './index.pug';
 import { authController } from '../../controllers/AuthControllers';
 import { userController } from '../../controllers/UserController';
 import { connect } from '../../utils/connect';
-import Router from '../../utils/Router';
+import Router from '../../utils/Router/Router';
 import { RouterPath } from '../../constants/AppConstants';
 
 class InfoInputs extends Block {

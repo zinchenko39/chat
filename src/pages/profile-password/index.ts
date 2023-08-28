@@ -1,5 +1,5 @@
 import { Button } from '../../components/button';
-import Block from '../../utils/Block';
+import Block from '../../utils/Block/Block';
 import template from './index.pug';
 import styles from '../profile-info/index.scss';
 import { PasswordInputs } from '../../components/password-inputs';
