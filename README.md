@@ -35,7 +35,7 @@ Husky
 Приложение создано с использованием следующих технологий:
 
 Pug
-Parcel
+WebPack
 Node.js
 Express
 WebSocket
