@@ -15,7 +15,14 @@ export class AuthController {
         Router.go(RouterPath.main);
       })
       .catch((error) => {
-        console.log(error);
+        try {
+          const { reason } = JSON.parse(error);
+          if (reason === 'User already in system') {
+            Router.go(RouterPath.main);
+          }
+        } catch {
+          console.log(error);
+        }
       });
   }
 

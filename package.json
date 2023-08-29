@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start": "parcel --no-cache --port 3000 index.html",
+    "dev": "parcel --no-cache --port 3000 index.html",
     "test": "jest",
     "lint": "eslint src/**/*.pug",
     "lint:fix": "eslint --fix src/**/*.pug",
