@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '../../utils/Block/Block';
 import template from './index.pug';
 import styles from './index.scss';
 import { MessageProps } from './props';

@@ -1,7 +1,7 @@
 import { Button } from '../../../components/button';
 import { ChatCard } from '../../../components/chat-card';
 import InputWrapper from '../../../components/input-wrapper';
-import Block from '../../../utils/Block';
+import Block from '../../../utils/Block/Block';
 import template from './index.pug';
 import { IChat } from '../../../interfaces/Store';
 import { store } from '../../../utils/Store';

@@ -1,4 +1,4 @@
-import { API_URL, METHODS, Options } from '../interfaces/Api';
+import { API_URL, METHODS, Options } from '../../interfaces/Api';
 
 function queryStringify(data: Record<string, unknown>) {
   if (typeof data !== 'object') {

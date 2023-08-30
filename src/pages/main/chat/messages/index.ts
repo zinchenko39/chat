@@ -1,5 +1,5 @@
 import { Message } from '../../../../components/message';
-import Block from '../../../../utils/Block';
+import Block from '../../../../utils/Block/Block';
 import template from './index.pug';
 import styles from './index.scss';
 import { store } from '../../../../utils/Store';

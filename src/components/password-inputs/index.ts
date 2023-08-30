@@ -1,10 +1,10 @@
 import { Button } from '../button';
 import InputWrapper from '../input-wrapper';
-import Block from '../../utils/Block';
+import Block from '../../utils/Block/Block';
 import template from './index.pug';
 import { userController } from '../../controllers/UserController';
 import { authController } from '../../controllers/AuthControllers';
-import Router from '../../utils/Router';
+import Router from '../../utils/Router/Router';
 import { RouterPath } from '../../constants/AppConstants';
 
 export class PasswordInputs extends Block {

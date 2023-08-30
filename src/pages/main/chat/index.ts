@@ -1,4 +1,4 @@
-import Block from '../../../utils/Block';
+import Block from '../../../utils/Block/Block';
 import { ChatFooter } from './footer';
 import ChatHeader from './header';
 import template from './index.pug';
