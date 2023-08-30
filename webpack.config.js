@@ -10,8 +10,9 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    historyApiFallback: true, // Эта опция перенаправит все неизвестные запросы на index.html.
+    historyApiFallback: true,
     port: 3000,
+    https: true,
   },
   module: {
     rules: [
