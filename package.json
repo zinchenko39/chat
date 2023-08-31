@@ -42,7 +42,7 @@
     "jest-environment-jsdom": "29.6.4",
     "parcel-transformer-pug-precompile": "1.0.6",
     "prettier": "2.8.3",
-    "pug-loader": "^1.0.2",
+    "pug-loader": "2.4.0",
     "sass": "1.66.1",
     "sass-loader": "^13.3.2",
     "sinon": "15.2.0",
@@ -61,7 +61,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "pug": "^3.0.2"
+    "pug": "2.0.4"
   },
   "engines": {
     "node": "19.3.0"
