@@ -4,7 +4,7 @@ import { ErrorPage } from './src/pages/error';
 import MainPage from './src/pages/main';
 import ProfileInfoPage from './src/pages/profile-info';
 import { ProfilePasswordPage } from './src/pages/profile-password';
-import Router from './src/utils/Router';
+import Router from './src/utils/Router/Router';
 import { RouterPath } from './src/constants/AppConstants';
 
 Router.use(RouterPath.login, LoginPage, false)

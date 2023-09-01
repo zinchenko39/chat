@@ -1,4 +1,4 @@
-import { Api } from '../utils/HTTPTransport';
+import { Api } from '../utils/HTTPTransport/HTTPTransport';
 import {
   ISignInData,
   IResponse,
@@ -63,7 +63,7 @@ export class ChatApi extends Api {
     super('/chats');
   }
 
-  async getChats<T>(): Promise<IChat[]> {
+  async getChats(): Promise<IChat[]> {
     return await this.http.get('');
   }
 
